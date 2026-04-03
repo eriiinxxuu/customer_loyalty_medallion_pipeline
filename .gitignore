@@ -1,0 +1,14 @@
+# Terraform
+*.tfvars
+*.tfvars.json
+**/.terraform/
+**/.terraform.lock.hcl
+.DS_Store
+**/.DS_Store.DS_Store
+**/.DS_Store
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
