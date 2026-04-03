@@ -5,8 +5,8 @@ import dbldatagen as dg
 spark.conf.set("spark.sql.shuffle.partitions", "200")
 
 transactions = (
-    dg.DataGenerator(spark, rows=10_000_000, partitions=200)
-    .withColumn("transaction_id", "string", prefix="TXN", uniqueValues=10_000_000)
+    dg.DataGenerator(spark, rows=50_000_000, partitions=200)
+    .withColumn("transaction_id", "string", prefix="TXN", uniqueValues=50_000_000)
     .withColumn("member_id",      "string", prefix="MBR", minValue=1, maxValue=1_000_000)
     .withColumn("transaction_date","date",  begin="2022-01-01", end="2024-12-31", random=True)
     .withColumn("amount",         "decimal(10,2)", minValue=5.0, maxValue=2000.0)
