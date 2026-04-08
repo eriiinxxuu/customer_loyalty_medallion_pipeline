@@ -144,11 +144,11 @@ WHERE effective_date <= '2023-03-01'
 |---|---|---|
 | Photon vectorized engine | All queries run on Databricks Photon runtime | Full vectorized execution across scan, join, window, and aggregation — confirmed by `The query is fully supported by Photon` in all execution plans |
 | Adaptive Query Execution | Enforced by Databricks Serverless runtime, `shuffle.partitions=200` | Shuffle partitions dynamically coalesced at runtime based on actual data size |
-| Dynamic Partition Pruning | Silver partitioned by `transaction_month`; date filters pushed to file scan level | Photon `DictionaryFilters` applied at scan time — 100% of out-of-range partition files skipped ([execution plan](evidence/screenshots/partition_pruning.png)) |
-| Broadcast Join | Store dimension (~500 rows) broadcast to all executors via `EXECUTOR_BROADCAST` | Silver-side 50M rows require zero shuffle — verified via `PhotonBroadcastHashJoin` in physical plan ([execution plan](evidence/screenshots/broadcast_join.png)) |
-| PhotonTopK Deduplication | `row_number()` window function on `transaction_id` ordered by `ingested_at DESC` | Photon optimizes to `PhotonTopK` — single pass per partition, no groupBy + join shuffle ([execution plan](evidence/screenshots/window_dedup.png)) |
+| Dynamic Partition Pruning | Silver partitioned by `transaction_month`; date filters pushed to file scan level | Photon `DictionaryFilters` applied at scan time — 100% of out-of-range partition files skipped ([execution plan](https://github.com/eriiinxxuu/customer_loyalty_medallion_pipeline/blob/master/screenshots/evidence2.png)) |
+| Broadcast Join | Store dimension (~500 rows) broadcast to all executors via `EXECUTOR_BROADCAST` | Silver-side 50M rows require zero shuffle — verified via `PhotonBroadcastHashJoin` in physical plan ([execution plan](https://github.com/eriiinxxuu/customer_loyalty_medallion_pipeline/blob/master/screenshots/evidence1.1.png)) |
+| PhotonTopK Deduplication | `row_number()` window function on `transaction_id` ordered by `ingested_at DESC` | Photon optimizes to `PhotonTopK` — single pass per partition, no groupBy + join shuffle ([execution plan](https://github.com/eriiinxxuu/customer_loyalty_medallion_pipeline/blob/master/screenshots/evidence4.png)) |
 | Z-ORDER (Gold) | `OPTIMIZE loyalty.gold.member_summary ZORDER BY (member_id)` post-write | File compaction and data co-location for downstream member lookups and SQL analytics queries |
-| Incremental Processing | Delta CDF version tracking (Silver → Gold) and `ingested_at` watermark (Bronze → Silver) | Daily pipeline processes 50K rows instead of re-scanning 50M — verified via `DESCRIBE HISTORY` ([evidence](evidence/screenshots/describe_history.png)) |
+| Incremental Processing | Delta CDF version tracking (Silver → Gold) and `ingested_at` watermark (Bronze → Silver) | Daily pipeline processes 50K rows instead of re-scanning 50M — verified via `DESCRIBE HISTORY` ([evidence](https://github.com/eriiinxxuu/customer_loyalty_medallion_pipeline/blob/master/screenshots/evidence3.png)) |
  
 ## Infrastructure (Terraform)
  
