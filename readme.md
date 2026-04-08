@@ -4,9 +4,12 @@
 ![Databricks](https://img.shields.io/badge/Databricks-Serverless_Photon-FF3621.svg)
 ![PySpark](https://img.shields.io/badge/PySpark-Structured_Processing-E25A1C.svg)
 ![Delta Lake](https://img.shields.io/badge/Delta_Lake-ACID_Transactions-00ADD8.svg)
+![Delta CDF](https://img.shields.io/badge/Delta_CDF-Incremental_Load-00ADD8.svg)
 ![Terraform](https://img.shields.io/badge/Terraform-Infrastructure_as_Code-623CE4.svg)
 ![Unity Catalog](https://img.shields.io/badge/Unity_Catalog-Data_Governance-1D6FA5.svg)
+![Great Expectations](https://img.shields.io/badge/Great_Expectations-Data_Quality-FF6B6B.svg)
 ![Data Volume](https://img.shields.io/badge/Data_Volume-50M_Rows-green.svg)
+![Architecture](https://img.shields.io/badge/Architecture-Medallion-gold.svg)
 
 
 
@@ -38,14 +41,16 @@ Databricks SQL Warehouse
   churn propensity · LTV · reward breakage · segment engagement
 ```
 
-## Techinical Skills
+## Technical Skills
+
 | Layer | Technology |
 |---|---|
 | Processing | Databricks (Serverless + Photon), PySpark, SQL |
-| Storage | Delta Lake, Unity Catalog |
+| Storage | Delta Lake, Unity Catalog, Delta CDF |
 | Orchestration | Databricks Workflows |
+| Data Quality | Great Expectations |
 | Infrastructure | Terraform (Databricks provider) |
-| Data generation | dbldatagen |
+| Data Generation | dbldatagen |
 
 ## Infrastructure
 
