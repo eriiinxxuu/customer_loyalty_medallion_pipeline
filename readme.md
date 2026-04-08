@@ -8,6 +8,8 @@
 ![Unity Catalog](https://img.shields.io/badge/Unity_Catalog-Data_Governance-FF3621.svg)
 ![Data Volume](https://img.shields.io/badge/Data_Volume-50M_Rows-green.svg)
 
+
+
 ## Introduction
 A large-scale data processing platform built on Databricks for a customer loyalty programme, ingesting and transforming transaction, reward, and member activity records across a medallion architecture (Bronze → Silver → Gold).
 
